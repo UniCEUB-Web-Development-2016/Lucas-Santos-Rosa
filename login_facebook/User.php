@@ -1,4 +1,7 @@
 <?php
+//Lucas Santos RA21444918
+//Marco Aurélio RA21462877
+//Gustavo Garcia RA21462877
 class User{
    private $nome;
 private $sobrenome;

@@ -1,0 +1,1 @@
+Caio, não consegui fazer a chamada das paginas LayoutManager.js e nem do LayoutControl.js, resumindo não consegui fazer nada com javascript.

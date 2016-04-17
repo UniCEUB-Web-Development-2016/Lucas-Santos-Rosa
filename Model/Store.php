@@ -2,17 +2,17 @@
 
 class Store{
 	
-	$name_store;
-	$opennclose_store;
-	$location_store;
-	$cod_product;
-	$cod_service;
+	private $name_store;
+	private $openclose_store;
+	private $location_store;
+	private $cod_product;
+	private $cod_service;
 	
 	
-	public function __construct($name_store, $opennclose_store, $location_store, $cod_product, $cod_service){
+	public function __construct($name_store, $openclose_store, $location_store, $cod_product, $cod_service){
 		$this->set_nameStore($name_store);
 		$this->set_OpenCloseTime($openclose_store);
-		$this->set_location($location_store);
+		$this->set_locationStore($location_store);
 		$this->set_product($cod_product);
 		$this->set_service($cod_service);
 	}
@@ -40,22 +40,22 @@ class Store{
 	
 	//GET
 	public function get_nameStore(){
-		echo $name_store;
+		return $this->name_store;
 	}
 	
-	public function get_OpenClogetime(){
-		echo $openclose_store;
+	public function get_OpenClosetime(){
+		return $this->openclose_store;
 	}
 	
 	public function get_locationStore(){
-		echo $location_store;
+		return $this->location_store;
 	}
 	
 	public function get_product(){
-		echo $cod_product;
+		return $this->cod_product;
 	}
 	
 	public function get_service(){
-		echo $cod_service;
+		return $this->cod_service;
 	}
 }

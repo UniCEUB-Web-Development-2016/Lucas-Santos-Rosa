@@ -2,10 +2,10 @@
 
 class Services{
 	
-	$name_service;
-	$tipe_service;
-	$time_service;
-	$price_service;
+	private $name_service;
+	private $tipe_service;
+	private $time_service;
+	private $price_service;
 	
 	
 	public function __construct($name_service, $tipe_service, $time_service, $price_service){
@@ -34,18 +34,18 @@ class Services{
 	
 	//GET
 	public function get_nameService(){
-		echo $name_service;
+		return $this->name_service;
 	}
 	
 	public function get_tipeService(){
-		echo $tipe_service;
+		return $this->tipe_service;
 	}
 	
 	public function get_timeService(){
-		echo $time_service;
+		return $this->time_service;
 	}
 	
 	public function get_priceService(){
-		echo $price_service;
+		return $this->price_service;
 	}
 }

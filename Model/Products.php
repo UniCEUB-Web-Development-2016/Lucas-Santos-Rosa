@@ -2,11 +2,11 @@
 
 class Products{
 	
-	$name_product;
-	$tipe_product;
-	$sales_product;
-	$quant_product;
-	$price_product;
+	private $name_product;
+	private $tipe_product;
+	private $sales_product;
+	private $quant_product;
+	private $price_product;
 	
 	
 	public function __construct($name_product, $tipe_product, $sales_product, $quant_product, $price_product){
@@ -40,22 +40,22 @@ class Products{
 	
 	//GET
 	public function get_productName (){
-		echo $name_product;
+		return $this->name_product;
 	}
 	
 	public function get_productTipe (){
-		echo $tipe_product;
+		return $this->tipe_product;
 	}
 	
 	public function get_sales(){
-		echo $sales_product;
+		return $this->sales_product;
 	}
 	
 	public function get_quant(){
-		echo $quant_product;
+		return $this->quant_product;
 	}
 	
 	public function get_price(){
-		echo $price_product;
+		return $this->price_product;
 	}
 }

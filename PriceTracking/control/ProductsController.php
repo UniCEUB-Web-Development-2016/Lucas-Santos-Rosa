@@ -34,7 +34,7 @@ class ProductsController
 	
 	private function compare($params)
 	{
-		$paramsMap = ["name" => "", "type" => "", "time" => "", "price" => ""];
+		$paramsMap = ["name" => "", "type" => "", "sales" => "", "quant" => "", "price" => ""];
 		$result = array_diff_key($paramsMap, $params);
 		return $result;
 	}

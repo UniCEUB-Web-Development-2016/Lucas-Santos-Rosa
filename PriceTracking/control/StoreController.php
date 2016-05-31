@@ -34,11 +34,7 @@ class StoreController
 	
 	private function compare($params)
 	{
-<<<<<<< HEAD:PriceTracking/control/StoreController.php
 		$paramsMap = ["name" => "", "lat" => "", "log" => "", "worktime" => ""];
-=======
-		$paramsMap = ["name" => "", "location" => "", "worktime" => "", "prodserv" => ""];
->>>>>>> origin/master:PriceTracking(EXCEPTION)/control/StoreController.php
 		$result = array_diff_key($paramsMap, $params);
 		return $result;
 	}

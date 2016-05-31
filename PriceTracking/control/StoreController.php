@@ -34,7 +34,7 @@ class StoreController
 	
 	private function compare($params)
 	{
-		$paramsMap = ["name" => "", "type" => "", "time" => "", "price" => ""];
+		$paramsMap = ["name" => "", "lat" => "", "log" => "", "worktime" => ""];
 		$result = array_diff_key($paramsMap, $params);
 		return $result;
 	}
@@ -42,9 +42,9 @@ class StoreController
 	private function generateInsertQuery($store)
 	{
 		$query = 	"INSERT INTO store (name, location, worktime, codProdServ) VALUES ('".$store->get_nameStore()."','".
-					$store->get_locationStore()."','".
-					$store->get_worktimeStore()."','".
-					$store->get_codProdServ()."')";
+					$store->get_latStore()."','".
+					$store->get_logStore()."','".
+					$store->get_worktime()."')";
 		return $query;
 	}
 
@@ -56,7 +56,7 @@ class StoreController
 			$crit = $this->generateCriteria($params);
 			$db = new DatabaseConnector("localhost", "pricetracking", "mysql", "", "root", "");
 			$conn = $db->getConnection();
-			$result = $conn->query("SELECT name, location, worktime, codProdServ FROM store WHERE ".$crit);
+			$result = $conn->query("SELECT name, lat, log, worktime FROM store WHERE ".$crit);
 			//foreach($result as $row) 
 			return $result->fetchAll(PDO::FETCH_ASSOC);
 		} else {

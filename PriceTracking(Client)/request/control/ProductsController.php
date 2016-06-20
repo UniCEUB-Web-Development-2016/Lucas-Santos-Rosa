@@ -13,7 +13,8 @@ class ProductsController
 									$params["type"],
 									$params["sales"],
 									$params["quant"],
-									$params["price"]);
+									$params["price"],
+									$params["codStore"]);
 			$db = new DatabaseConnector("localhost", "pricetracking", "mysql", "", "root", "");
 			$conn = $db->getConnection();
 			return $conn->query($this->generateInsertQuery($products));
@@ -34,7 +35,7 @@ class ProductsController
 	
 	private function compare($params)
 	{
-		$paramsMap = ["name" => "", "type" => "", "time" => "", "price" => ""];
+		$paramsMap = ["name" => "", "type" => "", "sales" => "", "quant" => "", "price" => ""];
 		$result = array_diff_key($paramsMap, $params);
 		return $result;
 	}
@@ -42,11 +43,12 @@ class ProductsController
 	
 	private function generateInsertQuery($products)
 	{
-		$query =  	"INSERT INTO products (name, type, sales, quant, price) VALUES ('".$products->get_productName()."','".
+		$query =  	"INSERT INTO products (name, type, sales, quant, price, codStore) VALUES ('".$products->get_productName()."','".
 					 $products->get_productType()."','".
 					 $products->get_sales()."','".
 					 $products->get_quant()."','".
-					 $products->get_price()."')";
+					 $products->get_price()."','".
+					 $products->get_codStore()."')";
 		return $query;
 	}
 	public function search($request)
@@ -106,12 +108,18 @@ class ProductsController
         $params = $request->get_params();
         $db = new DatabaseConnector("localhost", "pricetracking", "mysql", "", "root", "");
         $conn = $db->getConnection();
-        return $conn->query($this->generateUpdateQuery($params));
+        $result = $conn->query($this->generateUpdateQuery($params));
+		return $result->fetchAll(PDO::FETCH_ASSOC);
     }
     private function generateUpdateQuery($params)
     {
         $crit = $this->generateUpdateCriteria($params);
-        return "UPDATE user SET " . $crit . " WHERE name = '" . $params["name"] . "'";
+        return "UPDATE products SET name = '" . $params["name"] 
+								. "', type = '" . $params["type"] 
+								. "', sales = '" . $params["sales"] 
+								. "', quant = '" . $params["quant"] 
+								. "', price = '" . $params["price"] 
+								. "' WHERE name = '" . $params["ref"] . "'";
     }
     private function generateUpdateCriteria($params)
     {

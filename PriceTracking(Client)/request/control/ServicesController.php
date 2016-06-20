@@ -13,7 +13,8 @@ class ServicesController
 			$service = new Services($params["name"],
 					$params["type"],
 					$params["time"],
-					$params["price"]);
+					$params["price"],
+					$params["codStore"]);
 			$db = new DatabaseConnector("localhost", "pricetracking", "mysql", "", "root", "");
 			$conn = $db->getConnection();
 			return $conn->query($this->generateInsertQuery($service));
@@ -41,10 +42,11 @@ class ServicesController
 
 	private function generateInsertQuery($service)
 	{
-		$query =  	"INSERT INTO services (name, type, time, price) VALUES ('".$service->get_nameService()."','".
+		$query =  	"INSERT INTO services (name, type, time, price, codStore) VALUES ('".$service->get_nameService()."','".
 					$service->get_typeService()."','".
 					$service->get_timeService()."','".
-					$service->get_priceService()."')";
+					$service->get_priceService()."','".
+					$service->get_codStore()."')";
 		return $query;
 	}
 
@@ -105,12 +107,17 @@ class ServicesController
         $params = $request->get_params();
         $db = new DatabaseConnector("localhost", "pricetracking", "mysql", "", "root", "");
         $conn = $db->getConnection();
-        return $conn->query($this->generateUpdateQuery($params));
+        $result = $conn->query($this->generateUpdateQuery($params));
+		return $result->fetchAll(PDO::FETCH_ASSOC);
     }
     private function generateUpdateQuery($params)
     {
         $crit = $this->generateUpdateCriteria($params);
-        return "UPDATE user SET " . $crit . " WHERE name = '" . $params["name"] . "'";
+        return "UPDATE services SET name = '" . $params["name"] 
+								. "', type = '" . $params["type"] 
+								. "', time = '" . $params["time"] 
+								. "', price = '" . $params["price"] 
+								. "' WHERE name = '" . $params["ref"] . "'";
     }
     private function generateUpdateCriteria($params)
     {

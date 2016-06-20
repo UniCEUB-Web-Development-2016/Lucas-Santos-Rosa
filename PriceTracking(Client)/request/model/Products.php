@@ -7,14 +7,16 @@ class Products{
 	private $sales_product;
 	private $quant_product;
 	private $price_product;
+	private $codStore;
 	
 	
-	public function __construct($name_product, $type_product, $sales_product, $quant_product, $price_product){
+	public function __construct($name_product, $type_product, $sales_product, $quant_product, $price_product, $codStore){
 		$this->set_productName($name_product);
 		$this->set_productType($type_product);
 		$this->set_sales($sales_product);
 		$this->set_quant($quant_product);
 		$this->set_price($price_product);
+		$this->set_codStore($codStore);
 	}
 	
 	//SET
@@ -38,6 +40,10 @@ class Products{
 		$this->price_product = $price_product;
 	}
 	
+	private function set_codStore($codStore){
+		$this->codStore = $codStore;
+	}
+	
 	//GET
 	public function get_productName (){
 		return $this->name_product;
@@ -58,4 +64,9 @@ class Products{
 	public function get_price(){
 		return $this->price_product;
 	}
+	
+	public function get_codStore(){
+		return $this->codStore;
+	}
+	
 }

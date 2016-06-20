@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<?php include('navbar.php') ?>
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -21,45 +21,6 @@
 	
   </head>
   <body>
-	<!-- Navigation bar Begins-->
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="#">PriceTracking</a>
-        </div>
-		
-		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-		
-		<form class="navbar-form navbar-left" role="search" id="navBarSearchForm">
-			<div class="form-group">
-				<input type="text" class="form-control" placeholder="What you want?">
-			</div>
-			<button type="submit" class="btn btn-default">Search</button>
-		</form>
-		
-        <div id="navbar" class="navbar-collapse collapse">
-          <form class="navbar-form navbar-right">
-            <div class="form-group">
-              <input type="text" placeholder="Email" class="form-control">
-            </div>
-            <div class="form-group">
-              <input type="password" placeholder="Password" class="form-control">
-            </div>
-            <button type="submit" class="btn btn-success">Sign in</button>
-			<button type="submit" class="btn btn-danger">Forgot Password</button>
-          </form>
-        </div><!--/.navbar-collapse -->
-      </div>
-    </nav>
-
-<!-- Navigation bar Ends-->
-	
 <!-- Main jumbotron for a primary marketing message or call to action -->
     <div class="jumbotron">
       <div class="container">
@@ -78,7 +39,7 @@
         <div class="col-md-4">
           <h1>Not Here yet?</h1>
 		  <h2>Register!</h2>
-          <button class="btn btn-lg btn-primary btn-block" type="submit">Sign up</button>
+          <a  href="Register.php" ><button class="btn btn-lg btn-primary btn-block">Sign up</button></a>
         </div>
         <div class="col-md-4">
           <h2>Or Register via:</h2>

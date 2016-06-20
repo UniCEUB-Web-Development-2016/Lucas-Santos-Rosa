@@ -11,8 +11,7 @@ class StoreController
 		if($this->isEmpty($params) == true)
 		{
 			$store = new Store(	$params["name"],
-								$params["lat"],
-								$params["log"],
+								$params["local"],
 								$params["worktime"],
 								$params["email"],
 								$params["password"]);
@@ -36,14 +35,14 @@ class StoreController
 	
 	private function compare($params)
 	{
-		$paramsMap = ["name" => "", "lat" => "", "log" => "", "worktime" => "", "email" => "", "password" => ""];
+		$paramsMap = ["name" => "", "local" => "", "worktime" => "", "email" => "", "password" => ""];
 		$result = array_diff_key($paramsMap, $params);
 		return $result;
 	}
 	
 	private function generateInsertQuery($store)
 	{
-		$query = 	"INSERT INTO store (name, lat, log, worktime, email, password) VALUES ('".$store->get_nameStore()."','".
+		$query = 	"INSERT INTO store (name, local, worktime, email, password) VALUES ('".$store->get_nameStore()."','".
 					$store->get_latStore()."','".
 					$store->get_logStore()."','".
 					$store->get_worktimeStore()."','".
@@ -55,17 +54,17 @@ class StoreController
 	public function search($request)
 	{
 		$params = $request->get_params();
-		if($this->isEmpty($params) == true)
-		{
+		/*if($this->isEmpty($params) == true)
+		{*/
 			$crit = $this->generateCriteria($params);
 			$db = new DatabaseConnector("localhost", "pricetracking", "mysql", "", "root", "");
 			$conn = $db->getConnection();
-			$result = $conn->query("SELECT name, lat, log, worktime FROM store WHERE ".$crit);
+			$result = $conn->query("SELECT name, local, worktime, email FROM store WHERE ".$crit);//aqui é o teste<----------
 			//foreach($result as $row) 
 			return $result->fetchAll(PDO::FETCH_ASSOC);
-		} else {
+		/*} else {
 			return "Ha campos vazios";
-		}
+		}*/
 	}
 	
 	public function ReqDelete($request)
